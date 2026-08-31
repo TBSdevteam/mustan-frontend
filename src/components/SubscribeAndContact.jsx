@@ -153,7 +153,6 @@ const SubscribeAndContact = () => {
             onChange={(e)=>setFirstName(e.target.value)}
             className="w-100 m-0 p-3"
             placeholder="First Name*"
-            required
             style={{ color: "black", borderBottom: "none", outline: "none" }}
           />
           <input
@@ -162,14 +161,12 @@ const SubscribeAndContact = () => {
             onChange={(e)=>setLastName(e.target.value)}
             className="w-100 m-0 p-3"
             placeholder="Last Name*"
-            required
             style={{ color: "black", borderBottom: "none", outline: "none" }}
           />
           <input
             type="email"
             className="w-100 m-0 p-3"
             placeholder="Email*"
-            required
             value={email}
             onChange={(e)=>setEmail(e.target.value)}
             style={{ color: "black", borderBottom: "none", outline: "none" }}
@@ -180,12 +177,10 @@ const SubscribeAndContact = () => {
             value={phone}
             onChange={(e)=>setPhone(e.target.value)}
             placeholder="Phone"
-            required
             style={{ color: "black", borderBottom: "none", outline: "none" }}
           />
           <input
-            type="text"
-            required      
+            type="text"      
             value={message}
             onChange={(e)=>setMessage(e.target.value)}      
             className="w-100 m-0 p-3"
