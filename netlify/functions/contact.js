@@ -48,12 +48,16 @@ export async function handler(event) {
     return respond(400, { success: false, message: "Please enter a valid email address." });
   }
 
-  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD } = process.env;
+  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, CONTACT_TO_EMAIL } = process.env;
 
   if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASSWORD) {
     console.error("Contact function is missing one or more SMTP_* environment variables.");
     return respond(500, { success: false, message: "Failed to submit the response. Please try again later." });
   }
+
+  // Where notification emails are delivered. Defaults to the address below;
+  // override by setting a CONTACT_TO_EMAIL environment variable in Netlify.
+  const toEmail = CONTACT_TO_EMAIL || "vinaygola.abrpl@gmail.com";
 
   const port = Number(SMTP_PORT);
 
@@ -73,7 +77,7 @@ export async function handler(event) {
       // authenticated account, so the visitor's email is used as Reply-To
       // instead, letting you hit "Reply" and respond straight to them.
       from: `"Mustan Painting and Decorating Website" <${SMTP_USER}>`,
-      to: SMTP_USER,
+      to: toEmail,
       replyTo: `"${firstName} ${lastName}" <${email}>`,
       subject: `New Contact Form Submission - ${firstName} ${lastName}`,
       text:
