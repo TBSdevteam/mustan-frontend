@@ -57,7 +57,7 @@ export async function handler(event) {
 
   // Where notification emails are delivered. Defaults to the address below;
   // override by setting a CONTACT_TO_EMAIL environment variable in Netlify.
-  const toEmail = CONTACT_TO_EMAIL || "vinaygola.abrpl@gmail.com";
+  const toEmail = CONTACT_TO_EMAIL || "rahul@absoluteranking.com";
 
   const port = Number(SMTP_PORT);
 
@@ -81,7 +81,7 @@ export async function handler(event) {
       replyTo: `"${firstName} ${lastName}" <${email}>`,
       subject: `New Contact Form Submission - ${firstName} ${lastName}`,
       text:
-        "New Contact Form Submission\n\n" +
+        "New Query via Contact Form Submission\n\n" +
         `First Name: ${firstName}\n` +
         `Last Name: ${lastName}\n` +
         `Email: ${email}\n` +

@@ -9,8 +9,64 @@ const SubscribeAndContact = () => {
   const [message,setMessage]=useState("");
   const [isVisible,setIsVisible]=useState(false);
 
+  const validateForm = () => {
+    const trimmedFirstName = firstName.trim();
+    const trimmedLastName = lastName.trim();
+    const trimmedEmail = email.trim();
+    const trimmedPhone = phone.trim();
+    const trimmedMessage = message.trim();
+
+    const nameRegex = /^[A-Za-z][A-Za-z\s'-]{1,49}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    const phoneRegex = /^[+]?[0-9\s()-]{7,20}$/;
+
+    if (!trimmedFirstName) {
+      return "Please enter your first name.";
+    }
+    if (!nameRegex.test(trimmedFirstName)) {
+      return "First name should only contain letters.";
+    }
+
+    if (!trimmedLastName) {
+      return "Please enter your last name.";
+    }
+    if (!nameRegex.test(trimmedLastName)) {
+      return "Last name should only contain letters.";
+    }
+
+    if (!trimmedEmail) {
+      return "Please enter your email address.";
+    }
+    if (!emailRegex.test(trimmedEmail)) {
+      return "Please enter a valid email address.";
+    }
+
+    if (!trimmedPhone) {
+      return "Please enter your phone number.";
+    }
+    if (!phoneRegex.test(trimmedPhone) || trimmedPhone.replace(/\D/g, "").length < 7) {
+      return "Please enter a valid phone number.";
+    }
+
+    if (!trimmedMessage) {
+      return "Please enter a message.";
+    }
+    if (trimmedMessage.length < 10) {
+      return "Your message should be at least 10 characters.";
+    }
+
+    return null;
+  };
+
   const handleSubmit=(e)=>{
     e.preventDefault();
+
+    const validationError = validateForm();
+    if (validationError) {
+      toast.error(validationError);
+      return;
+    }
+
     fetch("/.netlify/functions/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
