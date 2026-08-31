@@ -79,7 +79,7 @@ export async function handler(event) {
       from: `"Mustan Painting and Decorating Website" <${SMTP_USER}>`,
       to: toEmail,
       replyTo: `"${firstName} ${lastName}" <${email}>`,
-      subject: `New Contact Form Submission - ${firstName} ${lastName}`,
+      subject: `New Query via Contact Form Submission - ${firstName} ${lastName}`,
       text:
         "New Query via Contact Form Submission\n\n" +
         `First Name: ${firstName}\n` +
@@ -88,7 +88,7 @@ export async function handler(event) {
         `Phone: ${phone}\n` +
         `Message: ${message}\n`,
       html:
-        "<h2>New Contact Form Submission</h2>" +
+        "<h2>New Query via Contact Form Submission</h2>" +
         `<p><strong>First Name:</strong> ${escapeHtml(firstName)}</p>` +
         `<p><strong>Last Name:</strong> ${escapeHtml(lastName)}</p>` +
         `<p><strong>Email:</strong> ${escapeHtml(email)}</p>` +
