@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import ContactComponent from "../components/ContactComponent";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
@@ -19,6 +20,11 @@ const Gallery = () => {
   const navigate = useNavigate();
   return (
     <>
+      <Helmet>
+        <title>Gallery | Mustan Painting and Decorating Sydney</title>
+        <meta name="description" content="Browse our gallery of completed residential and commercial painting projects across Sydney, Australia, showcasing our quality craftsmanship." />
+        <meta name="keywords" content="painting gallery Sydney, before and after painting, Mustan Painting and Decorating portfolio" />
+      </Helmet>
       <Navbar />
       <div
         className=" gallery w-100 h-100 mb-md-0 mb-5 "

@@ -1,0 +1,11 @@
+# Minimal Netlify configuration.
+#
+# This only tells Netlify where the serverless functions live, so the
+# /.netlify/functions/contact endpoint used by the contact form is detected
+# and deployed. It intentionally does NOT set [build] command/publish here,
+# so it won't override whatever build command / publish directory is already
+# configured in the Netlify UI for this site (if you have one, this file will
+# simply be additive; if not, Netlify will still auto-detect the Vite build).
+
+[functions]
+  directory = "netlify/functions"

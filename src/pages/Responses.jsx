@@ -8,6 +8,7 @@ import {useSelector} from "react-redux";
 import {useNavigate} from 'react-router-dom';
 import { useEffect } from "react";
 import logo from "../assets/logo.png";
+import { Helmet } from "react-helmet-async";
 
 
 const Responses = () => {
@@ -98,6 +99,11 @@ useEffect(()=>{
   // ];
   return (
     <Box p={[3, 5, 10]} className="Home" sx={{ height: "100vh" }}>
+      <Helmet>
+        <title>All Responses | Mustan Painting and Decorating Admin</title>
+        <meta name="description" content="Admin dashboard showing all contact form responses for Mustan Painting and Decorating." />
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <Grid container alignItems="center" spacing={1}>
         <Grid item md={6} sm={12} className="d-flex d-md-none mx-auto">
           <img src={logo} alt="logo" style={{ maxHeight: "100px" }} />

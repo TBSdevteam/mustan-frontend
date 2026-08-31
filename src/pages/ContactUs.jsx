@@ -4,6 +4,7 @@ import Image1 from "../assets/image4.jpg";
 import ContactComponent from "../components/ContactComponent";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
+import { Helmet } from "react-helmet-async";
 
 const ContactUs = () => {
   const linkRef=useRef(null);
@@ -22,6 +23,11 @@ const ContactUs = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Contact Us | Mustan Painting and Decorating Sydney</title>
+        <meta name="description" content="Get in touch with Mustan Painting and Decorating for a free quote on residential or commercial painting services in Sydney. Call, email, or send us a message." />
+        <meta name="keywords" content="contact Mustan Painting and Decorating, painting quote Sydney, Sydney painters contact" />
+      </Helmet>
       <Navbar />
       <div style={{ maxWidth: "100vw", paddingTop: "72px" }}>
         <div

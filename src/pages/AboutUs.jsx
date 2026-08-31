@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import ContactComponent from "../components/ContactComponent";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
@@ -7,6 +8,11 @@ import aboutImage from  "../assets/news-letter-bg.png"
 const AboutUs = () => {
   return (
     <>
+      <Helmet>
+        <title>About Us | Mustan Painting and Decorating Sydney</title>
+        <meta name="description" content="Learn about Mustan Painting and Decorating, a family-run painting business in Sydney with over 12 years of combined experience delivering quality finishes and great customer care." />
+        <meta name="keywords" content="about Mustan Painting and Decorating, Sydney painting company, family run painters, painting experience Sydney" />
+      </Helmet>
       <Navbar />
     <div style={{ maxWidth: "100vw" ,paddingTop:"72px"}}>
       <div

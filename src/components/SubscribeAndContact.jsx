@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import {toast} from "react-toastify";
-import { useAddResponseMutation } from "../store/allApi";
 
 const SubscribeAndContact = () => {
   const [email,setEmail]=useState("");
@@ -9,19 +8,26 @@ const SubscribeAndContact = () => {
   const [phone,setPhone]=useState("");
   const [message,setMessage]=useState("");
   const [isVisible,setIsVisible]=useState(false);
-  const [addResponse]=useAddResponseMutation();
 
   const handleSubmit=(e)=>{
     e.preventDefault();
-    addResponse({
-      first_name:firstName,
-      last_name:lastName,
-      email,
-      phone,
-      message
+    fetch("/.netlify/functions/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        phone,
+        message
+      })
     })
-    .then((res)=>{
-      toast.success(res.message || "Response submitted successfully!");
+    .then((response)=>response.json().then((data)=>({ ok: response.ok, data })))
+    .then(({ ok, data })=>{
+      if(!ok || !data.success){
+        throw new Error(data.message || "Failed to submit the response");
+      }
+      toast.success(data.message || "Response submitted successfully!");
       setEmail("");
       setFirstName("");
       setLastName("");
@@ -30,7 +36,7 @@ const SubscribeAndContact = () => {
     })
     .catch((err)=>{
       console.log(err)
-      toast.error(err.message || err.data.message || "Failed to submit the response")
+      toast.error(err.message || "Failed to submit the response")
     })
   }
 

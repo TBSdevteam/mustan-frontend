@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import ContactComponent from "../components/ContactComponent";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
@@ -11,6 +12,11 @@ const Services = () => {
   const navigate = useNavigate();
   return (
     <>
+      <Helmet>
+        <title>Our Services | Residential &amp; Commercial Painting - Mustan Painting and Decorating</title>
+        <meta name="description" content="Explore our painting and decorating services in Sydney including residential painting, commercial painting, and feature walls. Quality workmanship guaranteed." />
+        <meta name="keywords" content="residential painting Sydney, commercial painting Sydney, feature walls, painting and decorating services" />
+      </Helmet>
       <Navbar />
       <div style={{ maxWidth: "100vw", paddingTop: "72px" }}>
         <div

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import ContactComponent from "../components/ContactComponent";
 import Footer from "../components/Footer";
 import HomeNavbar from "../components/HomeNavbar";
@@ -46,6 +47,11 @@ const Home = () => {
   }, [scrollPosition]);
   return (
     <div className="d-md-flex" style={{ height: "100vh" }}>
+      <Helmet>
+        <title>Mustan Painting and Decorating | Sydney Painting &amp; Decorating Services</title>
+        <meta name="description" content="Professional residential and commercial painting and decorating services in Sydney, Australia. Family-run business with 12+ years of experience. Get a free quote today." />
+        <meta name="keywords" content="painting services Sydney, decorating services Sydney, residential painters, commercial painters, house painting Sydney, Mustan Painting and Decorating" />
+      </Helmet>
       <HomeNavbar />
       <div className="HomeView" style={{ overflowY:"auto"}}>
         <div className=" text-white w-100 mb-md-0 mb-5" style={{background:gradient}}>

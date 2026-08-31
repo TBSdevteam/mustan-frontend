@@ -6,6 +6,7 @@ import {useDispatch,useSelector} from "react-redux";
 import {loggedIn} from "../store/mainSlice";
 import {Box, Typography } from "@mui/material";
 import logo from "../assets/logo.png"
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const [email,setEmail]=useState("");
@@ -45,6 +46,11 @@ const Login = () => {
   }
   return (
     <Box className="Home px-md-0 px-3" height='100vh' display="flex" flexDirection="column" justifyContent="center" alignItems="center" >
+      <Helmet>
+        <title>Login | Mustan Painting and Decorating</title>
+        <meta name="description" content="Admin login portal for Mustan Painting and Decorating." />
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <Box textAlign="center">
         <img src={logo} height={100} width={200}  alt="logo" />
         <Typography textAlign="center"  className="fs-2 fw-max" mt={1}>Login to continue</Typography>
